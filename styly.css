@@ -1,0 +1,167 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+body {
+    background-image: linear-gradient(#615dad, #ffc8da);
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+}
+
+p {
+    padding: 30px;
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 45px;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+a {
+    color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.pravidla {
+    background-color: #1fcca4;
+    border: 0.5px solid #283e50;
+}
+
+.pravidla:hover {
+    background-color: #1cbb96;
+}
+
+.zacit {
+    background-color: #0197f6;
+    border: 0.5px solid #283e50;
+}
+
+.zacit:hover {
+    background-color: #0090e9;
+}
+
+.piskvorky {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 40%;
+    background-color: #283e50;
+    border-radius: 10px 10px 0 0;
+    min-height: 70%;
+    min-width: 364px;
+}
+
+.piskvorky h1 {
+    margin-top: 10%;
+}
+
+.uvodni {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.tlacitka {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.vysvetlenipravidel {
+    background-color: #283e50;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5%;
+    border-radius: 5px;
+}
+
+.vysvetlenipravidel li {
+    text-align: left;
+    /*line-height: 2;*/
+    margin-bottom: 12px;
+}
+
+.vysvetlenipravidel ol {
+    margin-bottom: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    font-size: 15px;
+}
+
+.navod {
+    width: 100%;
+}
+
+.popisek {
+    font-style: italic;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.navodspopiskem {
+    margin-bottom: 30px;
+}
+
+.krizek,
+.kolecko {
+    width: 1em;
+    height: 1em;
+    filter: invert(100%);
+}
+
+@media screen and (min-width: 800px) {
+    .obrazkovacast {
+        display: flex;
+        flex-wrap: wrap;
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+    .vysvetlenipravidel ol {
+        margin-top: 5%;
+        margin-left: 3%;
+    }
+    .navodspopiskem {
+        width: 45%;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .popisek {
+        font-size: 13px;
+    }
+    h1 {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .vysvetlenipravidel,
+    .piskvorky {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+}
