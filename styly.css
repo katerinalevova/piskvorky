@@ -200,6 +200,10 @@
             background-color: transparent;
         }
         
+        .policko:nth-child(10n) {
+            flex-grow: 1;
+        }
+        
         .policko:hover,
         .policko:focus {
             background-color: rgba(247, 231, 236, 0.9);
