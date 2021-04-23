@@ -4,7 +4,7 @@ console.log('funguju!');
 
 let naTahu = 'circle';
 
-const items = document.querySelectorAll('.policko');
+
 
 const kliknuti = (event) => {
     if (naTahu === 'circle') {
@@ -21,6 +21,8 @@ const kliknuti = (event) => {
 
 }
 
+const items = document.querySelectorAll('.policko');
+
 for (let i = 0; i < items.length; i += 1)
     items[i].addEventListener('click', kliknuti);
 
@@ -30,16 +32,5 @@ for (let i = 0; i < items.length; i += 1)
 
 
 //------------------------------------------------------------
-// const items = document.querySelectorAll('.policko');
 
-// const kliknuti = (event) => {
-//     event.target.classList.add('board__field--circle');
 //     document.querySelector('.kolecko').src = 'images/circle.svg';
-// }
-
-
-
-// const naTahu = circle;
-
-// for (let i = 0; i < items.length; i += 1)
-//     items[i].addEventListener('click', kliknuti);

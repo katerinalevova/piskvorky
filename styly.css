@@ -225,6 +225,8 @@
             background-repeat: no-repeat;
             background-size: 60%;
             background-position: center;
+            animation-name: gradual-growth;
+            animation-duration: 0.15s;
         }
         
         .board__field--cross {
@@ -232,6 +234,17 @@
             background-repeat: no-repeat;
             background-size: 60%;
             background-position: center;
+            animation-name: gradual-growth;
+            animation-duration: 0.1s;
+        }
+        
+        @keyframes gradual-growth {
+            0% {
+                background-size: 0%;
+            }
+            100% {
+                background-size: 60%;
+            }
         }
         
         @media screen and (min-width: 800px) {
