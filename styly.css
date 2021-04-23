@@ -140,7 +140,6 @@
             margin-bottom: 10%;
             margin-left: auto;
             margin-right: auto;
-            min-width: 544px;
             max-width: 80vmin;
         }
         
@@ -157,21 +156,21 @@
         
         .uvod--hra h2 {
             display: inline;
-            font-size: 30px;
+            font-size: 25px;
         }
         
         .hraje img {
-            font-size: 30px;
-            margin-bottom: -7px;
+            font-size: 25px;
+            margin-bottom: -5px;
         }
         
         .tlacitko--hra img {
             flex-shrink: 0;
             flex-grow: 0;
-            min-width: 60px;
+            min-width: 25px;
             border-radius: 10%;
             padding: 13px;
-            margin-top: -15px;
+            margin-top: -10px;
         }
         
         .domu img {
@@ -193,10 +192,8 @@
         
         .policko {
             border: 1px solid black;
-            margin: 0;
-            padding: 0;
-            height: 8vmin;
-            width: 10%;
+            min-height: 8vmin;
+            min-width: 10%;
             background-color: transparent;
         }
         
@@ -213,11 +210,9 @@
             background-image: linear-gradient(rgb(181, 179, 219), rgb(255, 217, 230));
             display: flex;
             flex-wrap: wrap;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 0;
+            margin-right: 0;
             border: 1px solid black;
-            width: 100%;
-            max-height: 80vmin;
         }
         
         .board__field--circle {
@@ -269,6 +264,23 @@
             }
             h1 {
                 margin-top: 0;
+            }
+            .hracipole {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hra {
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 544px;
+                min-width: 80vmin;
+            }
+            .hraje img {
+                font-size: 30px;
+                margin-bottom: -6px;
+            }
+            .uvod--hra h2 {
+                font-size: 30px;
             }
         }
         
