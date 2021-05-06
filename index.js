@@ -4,12 +4,6 @@ console.log('funguju!');
 
 let naTahu = 'circle';
 
-//------------------------------------------------------ Vem řádek a sloupec a vyrob z něj číslo políčka
-const boardSize = 10;
-const fields = document.querySelectorAll('.policko');
-const getField = (row, column) => fields[row * boardSize + column];
-//-------------------------------------------------------------------------------------------------------------
-
 const kliknuti = (event) => {
   if (naTahu === 'circle') {
     event.target.classList.add('board__field--circle');
@@ -17,24 +11,20 @@ const kliknuti = (event) => {
       '<h2>HRAJE: </h2> <img class="kolecko" src="images/circle.svg" alt="znak kolecko">';
     event.target.disabled = true;
 
-    const dejPozici = () => {
+    const kdoVyhral = () => {
       let souradnice = getPosition(event.target);
-      let { row, column } = souradnice;
-      console.log(row, column);
-      const numberOfField = row * 10 + column;
-      console.log(numberOfField);
-      const field = (numberOfField) => fields[numberOfField]; //const field = fields[numberOfField];
-      console.log(fields[numberOfField]);
-      console.log(getSymbol(fields[numberOfField]));
-      console.log(isWinningMove(fields[numberOfField]));
+      let { row, column } = souradnice; //console.log(row, column);
+      const numberOfField = row * 10 + column; //console.log(numberOfField);//const field = fields[numberOfField];// console.log(fields[numberOfField]);//console.log(getSymbol(fields[numberOfField]));//console.log(isWinningMove(fields[numberOfField]));
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
-          confirm('Gratulujeme, vyhrálo kolečko!');
+          if (confirm('Gratulujeme, vyhrál křížek!')) {
+            location.reload();
+          }
         }
       };
       setTimeout(vyhra, 100);
     };
-    dejPozici();
+    kdoVyhral();
 
     naTahu = 'cross';
     document.querySelector('.hraje').innerHTML =
@@ -44,25 +34,20 @@ const kliknuti = (event) => {
     document.querySelector('.hraje').innerHTML =
       '<h2>HRAJE: </h2> <img class="krizek" src="images/cross.svg" alt="znak krizek">';
     event.target.disabled = true;
-    const dejPozici = () => {
+    const kdoVyhral = () => {
       let souradnice = getPosition(event.target);
-      let { row, column } = souradnice;
-      console.log(row, column);
-      const numberOfField = row * 10 + column;
-      console.log(numberOfField);
-      const field = (numberOfField) => fields[numberOfField];
-      console.log(fields[numberOfField]);
-
-      console.log(getSymbol(fields[numberOfField]));
-      console.log(isWinningMove(fields[numberOfField]));
+      let { row, column } = souradnice; //console.log(row, column);
+      const numberOfField = row * 10 + column; //console.log(numberOfField);//console.log(fields[numberOfField]);//console.log(getSymbol(fields[numberOfField])//console.log(isWinningMove(fields[numberOfField]));
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
-          confirm('Gratulujeme, vyhrál křížek!');
+          if (confirm('Gratulujeme, vyhrál křížek!')) {
+            location.reload();
+          }
         }
       };
       setTimeout(vyhra, 100);
     };
-    dejPozici();
+    kdoVyhral();
 
     naTahu = 'circle';
     document.querySelector('.hraje').innerHTML =
@@ -75,8 +60,13 @@ const items = document.querySelectorAll('.policko');
 for (let i = 0; i < items.length; i += 1) {
   items[i].addEventListener('click', kliknuti);
 }
+//------------------------------------------------------------------------------getField
 
-//-------------------------------------------------------Vrať řádek a sloupec kliknutého políčka
+const boardSize = 10;
+const fields = document.querySelectorAll('.policko');
+const getField = (row, column) => fields[row * boardSize + column];
+
+//-------------------------------------------------------getPosition (Vrať řádek a sloupec kliknutého políčka)
 const getPosition = (field) => {
   let fieldIndex = 0;
   while (fieldIndex < fields.length && field !== fields[fieldIndex]) {
@@ -89,7 +79,7 @@ const getPosition = (field) => {
   };
 };
 
-//     document.querySelector('.kolecko').src = 'images/circle.svg';
+//--------------------------------------------------------getSymbol (Zjisti, jestli políčko obsahuje křížek nebo kolečko)
 
 const getSymbol = (field) => {
   if (field.classList.contains('board__field--cross')) {
@@ -98,7 +88,7 @@ const getSymbol = (field) => {
     return 'circle';
   }
 };
-
+//------------------------------------------------------isWinningMove
 const symbolsToWin = 5;
 const isWinningMove = (field) => {
   const origin = getPosition(field);
@@ -152,8 +142,3 @@ const isWinningMove = (field) => {
 
   return false;
 };
-
-//
-// else if (isWinningMove === true && kolecko) {
-//   alert ('Vyhrálo kolečko')
-// }
