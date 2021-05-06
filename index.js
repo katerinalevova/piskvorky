@@ -23,13 +23,16 @@ const kliknuti = (event) => {
       console.log(row, column);
       const numberOfField = row * 10 + column;
       console.log(numberOfField);
-      const field = (numberOfField) => fields[numberOfField];
+      const field = (numberOfField) => fields[numberOfField]; //const field = fields[numberOfField];
       console.log(fields[numberOfField]);
       console.log(getSymbol(fields[numberOfField]));
       console.log(isWinningMove(fields[numberOfField]));
-      if (isWinningMove(fields[numberOfField]) === true) {
-        alert('Gratulujeme, vyhrálo kolečko !');
-      }
+      const vyhra = () => {
+        if (isWinningMove(fields[numberOfField]) === true) {
+          confirm('Gratulujeme, vyhrálo kolečko!');
+        }
+      };
+      setTimeout(vyhra, 100);
     };
     dejPozici();
 
@@ -52,9 +55,12 @@ const kliknuti = (event) => {
 
       console.log(getSymbol(fields[numberOfField]));
       console.log(isWinningMove(fields[numberOfField]));
-      if (isWinningMove(fields[numberOfField]) === true) {
-        alert('Gratulujeme, vyhrál křížek!');
-      }
+      const vyhra = () => {
+        if (isWinningMove(fields[numberOfField]) === true) {
+          confirm('Gratulujeme, vyhrál křížek!');
+        }
+      };
+      setTimeout(vyhra, 100);
     };
     dejPozici();
 
