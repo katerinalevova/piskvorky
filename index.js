@@ -13,11 +13,11 @@ const kliknuti = (event) => {
 
     const kdoVyhral = () => {
       let souradnice = getPosition(event.target);
-      let { row, column } = souradnice; //console.log(row, column);
-      const numberOfField = row * 10 + column; //console.log(numberOfField);//const field = fields[numberOfField];// console.log(fields[numberOfField]);//console.log(getSymbol(fields[numberOfField]));//console.log(isWinningMove(fields[numberOfField]));
+      let { row, column } = souradnice;
+      const numberOfField = row * boardSize + column;
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
-          if (confirm('Gratulujeme, vyhrál křížek!')) {
+          if (confirm('Gratulujeme, vyhrálo kolečko!')) {
             location.reload();
           }
         }
@@ -36,8 +36,8 @@ const kliknuti = (event) => {
     event.target.disabled = true;
     const kdoVyhral = () => {
       let souradnice = getPosition(event.target);
-      let { row, column } = souradnice; //console.log(row, column);
-      const numberOfField = row * 10 + column; //console.log(numberOfField);//console.log(fields[numberOfField]);//console.log(getSymbol(fields[numberOfField])//console.log(isWinningMove(fields[numberOfField]));
+      let { row, column } = souradnice;
+      const numberOfField = row * boardSize + column;
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
           if (confirm('Gratulujeme, vyhrál křížek!')) {
@@ -95,10 +95,11 @@ const isWinningMove = (field) => {
   const symbol = getSymbol(field);
 
   let i;
+  let j;
 
   let inRow = 1; // Jednička pro právě vybrané políčko
   // Koukni doleva
-  i = origin.column;
+  i = origin.column; //sloupec kliknuteho policka
   while (i > 0 && symbol === getSymbol(getField(origin.row, i - 1))) {
     inRow++;
     i--;
@@ -120,7 +121,7 @@ const isWinningMove = (field) => {
 
   let inColumn = 1;
   // Koukni nahoru
-  i = origin.row;
+  i = origin.row; //radek kliknuteho policka
   while (i > 0 && symbol === getSymbol(getField(i - 1, origin.column))) {
     inColumn++;
     i--;
@@ -130,13 +131,72 @@ const isWinningMove = (field) => {
   i = origin.row;
   while (
     i < boardSize - 1 &&
-    symbol === getSymbol(getField(i + 1, origin.column))
+    symbol === getSymbol(getField(i + 1, origin.column + 1))
   ) {
     inColumn++;
     i++;
   }
 
   if (inColumn >= symbolsToWin) {
+    return true;
+  }
+
+  //-------------------------------------------------------------diagonalne
+
+  let inDiag = 1; // Jednička pro právě vybrané políčko
+  // Koukni doleva a nahoru
+  i = origin.column; //sloupec kliknuteho policka
+  j = origin.row; //řádek kliknutého políčka
+  while (i > 0 && j > 0 && symbol === getSymbol(getField(j - 1, i - 1))) {
+    inDiag++;
+    i--;
+    j--;
+  }
+
+  // Koukni doprava a nahoru
+  i = origin.column;
+  j = origin.row;
+  while (
+    i < boardSize - 1 &&
+    j > 0 &&
+    symbol === getSymbol(getField(j - 1, i + 1))
+  ) {
+    inDiag++;
+    i++;
+    j--;
+  }
+
+  if (inDiag >= symbolsToWin) {
+    return true;
+  }
+
+  // Koukni dolu a doleva
+  i = origin.column;
+  j = origin.row; //radek kliknuteho policka
+  while (
+    i > 0 &&
+    j < boardSize - 1 &&
+    symbol === getSymbol(getField(j + 1, i - 1))
+  ) {
+    inDiag++;
+    i--;
+    j++;
+  }
+
+  // Koukni dolu a doprava
+  i = origin.column;
+  j = origin.row;
+  while (
+    i < boardSize - 1 &&
+    j < boardSize - 1 &&
+    symbol === getSymbol(getField(j + 1, i + 1))
+  ) {
+    inDiag++;
+    i++;
+    j++;
+  }
+
+  if (inDiag >= symbolsToWin) {
     return true;
   }
 
