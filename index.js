@@ -17,7 +17,7 @@ const kliknuti = (event) => {
       const numberOfField = row * boardSize + column;
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
-          if (confirm('Gratulujeme, vyhrálo kolečko!')) {
+          if (confirm('Gratulujeme, vyhrálo kolečko! Spustit novou hru?')) {
             location.reload();
           }
         }
@@ -40,7 +40,7 @@ const kliknuti = (event) => {
       const numberOfField = row * boardSize + column;
       const vyhra = () => {
         if (isWinningMove(fields[numberOfField]) === true) {
-          if (confirm('Gratulujeme, vyhrál křížek!')) {
+          if (confirm('Gratulujeme, vyhrál křížek! Spustit novou hru?')) {
             location.reload();
           }
         }
