@@ -131,7 +131,7 @@ const isWinningMove = (field) => {
   i = origin.row;
   while (
     i < boardSize - 1 &&
-    symbol === getSymbol(getField(i + 1, origin.column + 1))
+    symbol === getSymbol(getField(i + 1, origin.column))
   ) {
     inColumn++;
     i++;
